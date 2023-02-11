@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "jest": "^29.4.2",
+    "ntc": "^0.0.1",
+    "svg": "^0.1.0"
+  },
+  "name": "so-very-glamourous",
+  "description": "## Task",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omgthegreenranger/so-very-glamourous.git"
+  },
+  "author": "Stephen Cardie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/omgthegreenranger/so-very-glamourous/issues"
+  },
+  "homepage": "https://github.com/omgthegreenranger/so-very-glamourous#readme"
+}
