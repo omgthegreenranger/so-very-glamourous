@@ -1,8 +1,6 @@
 const inquirer = require('inquirer');
-const Colour = require('./color');
+const Colour = require('./color.js');
 const svg = require('./svg');
-
-
 
 class CLI { 
     prompts() {
@@ -19,9 +17,10 @@ class CLI {
                 message: "Pick a colour, any colour!",
                 name: "colour",
                 validate: function(input) {
-                    const colorVal = new Colour();
-                    colorVal.validateHex(input);
-                    colorOut;
+                    var colourInput = input;
+                    const colourVal = new Colour();
+                    var colourIndex = colourVal.validateHex(colourInput);
+                    console.log(colourIndex);
                 // transform:
                 }    
             },

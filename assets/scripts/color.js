@@ -1,28 +1,36 @@
-const color = require('color-convert');
+const colour = require('color-convert');
 const regex = /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/;
-const options = ["#4433FF","blue"];
 
 class HexConfirm {
-    validateHex (colorIn) {    
-        var colorName = '';
-        var colorHex = '';
-        var colorOut = '';
-        if (regex.test(colorIn)) {
-            colorName = color.hex.keyword(colorIn);
-            colorHex = colorIn
-            colorOut = true;
-            return colorName, colorHex, colorOut;
-        } else if (color.keyword.hex(colorIn)) {
-            colorName = colorIn;
-            colorHex = color.keyword.hex(colorIn);
-            colorOut = true;
-            return colorName, colorHex, colorOut;
+    validateHex (colourIn) {
+        "use strict";
+        var colourType = colourIn;
+        var colourName = "";
+        var colourHex = "";
+        var colourOut = "";
+        if (regex.test(colourType)) {
+            console.log("Hex");
+            colourName = colour.hex.keyword(colourType);
+            colourHex = colourType;
+            colourOut = true;
+            return [colourOut, colourName, colourHex];
         } else {
-            colorOut = false;
-            return colorOut
-        }
+            colourType = colourIn.toLowerCase();
+            let colourMan = colour.keyword.hex(colourType);
+            colourMan = null ?? "None";
+            if (colourMan !== "None") {
+                console.log("name");
+                colourName = colourType;
+                colourHex = colour.keyword.hex(colourType);
+                colourOut = true;
+                return [colourOut, colourName, "#" + colourHex];
+            } else {
+                console.log("Other");
+                colourOut = false;
+                return [colourOut, colourName, colourHex];
+            };
+        };
     };
-
 };
 
 module.exports = HexConfirm;
