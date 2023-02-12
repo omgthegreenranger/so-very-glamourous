@@ -21,6 +21,7 @@ class CLI {
                     const colourVal = new Colour();
                     var colourIndex = colourVal.validateHex(colourInput);
                     console.log(colourIndex);
+                    return colourIndex[0];
                 // transform:
                 }    
             },
@@ -36,7 +37,10 @@ class CLI {
                 ]
                 }
             ])
-            .then((data) => console.log(data))
+            .then((data) => {
+                const svgDeets = data;
+                console.log(svgDeets);
+            })
     }
     
 }
