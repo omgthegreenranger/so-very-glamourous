@@ -1,4 +1,5 @@
 const SVG = require('svg.js');
+const fs = require('fs');
 
 function renderLinkIcon(node) {
     const iconSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
