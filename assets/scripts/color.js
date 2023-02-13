@@ -11,26 +11,20 @@ class HexConfirm {
         var colourHex = "";
         var colourOut = "";
         if (regex.test(colourType)) {
-            console.log("Hex");
             colourName = colour.hex.keyword(colourType);
             colourHex = colourType;
             colourOut = true;
             return [colourOut, colourName, colourHex];
         } else {
             colourType = colourType.toLowerCase();
-            let colourMan = colour.keyword.hex(colourType);
-            console.log(colourMan);
-            if (colourMan) {
+            let colourMan = typeof colour.keyword.hex(colourType);
+            console.log(colourMan, "colourman");
+            if (typeof colour.keyword.hex(colourType) !== 'undefined') {
                 console.log("name");
                 colourName = colourType;
                 colourHex = colour.keyword.hex(colourType);
                 colourOut = true;
                 return [colourOut, colourName, "#" + colourHex];
-            } else {
-                console.log("Other");
-                colourOut = false;
-                return [colourOut, colourName, colourHex];
-            };
         };
     };
 };

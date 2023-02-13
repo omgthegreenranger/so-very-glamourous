@@ -35,8 +35,6 @@ class CLI {
                     "square",
                     "hexagon",
                 ]
-
-                ## Acceptance Criteria
                 }
             ])
             .then((data) => {
