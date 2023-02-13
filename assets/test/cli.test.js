@@ -1,13 +1,11 @@
-const CLI = require("../scripts/cli");
-const inquirer = require('inquirer');
+const Colour = require('../scripts/color.js');
 
-jest.mock('inquirer');
-
-describe('Module test', () => {
-  test('user input', async () => {
-    expect.assertions(1);
-    inquirer.prompt = jest.fn().mockResolvedValue({ colour: "blue" });
-
-    await expect(inquirer.prompt()).resolves.toEqual({ colour: "blue" });
-  });
+describe('HexConfirm', () => {
+  describe('Validate Hex', () => {
+    it('Should confirm the string is a hex code', () => {
+      const colourInput = "#4433ff";
+      const validateHex = new Colour(colourInput);
+      expect(validateHex.validateHex()).toEqual([ true, 'royalblue', '#4433ff' ]);
+    })
+  })
 });

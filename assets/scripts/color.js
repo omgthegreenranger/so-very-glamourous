@@ -2,9 +2,11 @@ const colour = require('color-convert');
 const regex = /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/;
 
 class HexConfirm {
-    validateHex (colourIn) {
-        "use strict";
-        var colourType = colourIn;
+    constructor( colourInput ) {
+        this.colourIn = colourInput;
+    }
+    validateHex() {
+        var colourType = this.colourIn;
         var colourName = "";
         var colourHex = "";
         var colourOut = "";
@@ -15,7 +17,7 @@ class HexConfirm {
             colourOut = true;
             return [colourOut, colourName, colourHex];
         } else {
-            colourType = colourIn.toLowerCase();
+            colourType = colourType.toLowerCase();
             let colourMan = colour.keyword.hex(colourType);
             console.log(colourMan);
             if (colourMan) {

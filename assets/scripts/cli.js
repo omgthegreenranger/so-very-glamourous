@@ -18,8 +18,8 @@ class CLI {
                 name: "colour",
                 validate: function(input) {
                     var colourInput = input;
-                    const colourVal = new Colour();
-                    var colourIndex = colourVal.validateHex(colourInput);
+                    const colourVal = new Colour(colourInput);
+                    var colourIndex = colourVal.validateHex();
                     console.log(colourIndex);
                     return colourIndex[0];
                 // transform:
