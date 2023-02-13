@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const Colour = require('./color.js');
 const svg = require('./svg');
+var colourIndex = [];
 
 class CLI { 
     prompts() {
@@ -19,11 +20,15 @@ class CLI {
                 validate: function(input) {
                     var colourInput = input;
                     const colourVal = new Colour(colourInput);
-                    var colourIndex = colourVal.validateHex();
-                    console.log(colourIndex);
-                    return colourIndex[0];
-                // transform:
-                }    
+                    colourIndex = colourVal.validateHex();
+                    if(colourIndex[0] == false) {
+                        input = "You must give us a proper colour please.";
+                        return false;
+                    } else {
+                    return input = true;
+                    }          
+                },
+                
             },
                 {
                 type: "list",
@@ -38,7 +43,8 @@ class CLI {
                 }
             ])
             .then((data) => {
-                const svgDeets = data;
+                const responses = data;
+                const svgDeets = {"initials": responses["initials"], "colour": colourIndex[2], "shape": responses["shape"] }
                 console.log(svgDeets);
             })
     }

@@ -17,9 +17,7 @@ class HexConfirm {
             return [colourOut, colourName, colourHex];
         } else {
             colourType = colourType.toLowerCase();
-            let colourMan = typeof colour.keyword.hex(colourType);
-            console.log(colourMan, "colourman");
-            if (typeof colour.keyword.hex(colourType) !== 'undefined') {
+            if (colour.keyword.hex(colourType) !== 'undefined') {
                 console.log("name");
                 colourName = colourType;
                 colourHex = colour.keyword.hex(colourType);
