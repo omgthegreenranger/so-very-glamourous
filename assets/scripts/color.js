@@ -25,8 +25,13 @@ class HexConfirm {
                 colourHex = colour.keyword.hex(colourType);
                 colourOut = true;
                 return [colourOut, colourName, "#" + colourHex];
-        };
+            } else {
+                console.log("Other");
+                colourOut = false;
+                return [colourOut, colourName, colourHex];
+            };
     };
 };
+}
 
 module.exports = HexConfirm;
