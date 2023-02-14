@@ -56,23 +56,39 @@ class CLI {
                     message: "Shape your sigil",
                     name: "shape",
                     choices: [
-                        "triangle",
-                        "circle",
-                        "square",
-                        "hexagon",
+                        "Triangle",
+                        "Circle",
+                        "Square",
+                        "Hexagon",
                     ]
                 }
             ])
             .then((data) => {
-                const responses = data;
-                // const svgDeets = [responses["initials"], colourIndex[2], responses["shape"]]
-                // console.log(svgDeets);
-                const svg = new SVG(responses["initials"], textIndex[2], colourIndex[2], responses["shape"]);
-                fs.writeFile('./assets/images/results.svg', svg.render(),(err) => err && console.error(err));
+                var responses = data;
+                var svg = [responses["initials"], textIndex[2], colourIndex[2], responses["shape"]];
+                renderFile(svg);
             })
     }
-    
 }
 
+function renderFile(svg) {
+    var shape = svg[3];
+    switch(shape) {
+        case 'Triangle' :
+            var className = new SVG.Triangle(svg[0],svg[1],svg[2]);
+            break;
+        case 'Circle' :
+            var className = new SVG.Circle(svg[0],svg[1],svg[2]);
+            break;
+        case 'Square' :
+            var className = new SVG.Square(svg[0],svg[1],svg[2]);
+            break;
+        case 'Hexagon' :
+            var className = new SVG.Hexagon(svg[0],svg[1],svg[2]);
+            break;
+    }
+    writeData = className;
+    fs.writeFile('./assets/images/results.svg', writeData.render(),(err) => err && console.error(err));
+}
 
 module.exports = CLI;
